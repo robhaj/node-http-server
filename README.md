@@ -11,29 +11,29 @@ Create a new file called app.js
 ## Step 2
 
 ```js
-// Require/import the HTTP module
+// Import the HTTP module
 var http = require('http');
 ```
 
 ## Step 3
 ```js
 //Define a port we want to listen to
-const PORT=8080;
+var port=8080;
 ```
 
 ## Step 4
 
 ```js
 //Create a server
-var server = http.createServer(handleRequest);
+var server = http.createServer(requestHandler);
 ```
 
 ## Step 5
 
 ```js
-//Function which handles requests and send response
-function handleRequest(request, response){
-    response.end('It Works!! Path Hit: ' + request.url);
+//Function handling requests and response
+function requestHandler(request, response){
+    response.end('Success! You browsed to: ' + request.url);
 }
 ```
 
@@ -41,12 +41,13 @@ function handleRequest(request, response){
 
 ```js
 // Start our server
-server.listen(PORT, function(){
-    //Callback triggered when server is successfully listening. Hurray!
-    console.log("Server listening on: http://localhost:%s", PORT);
+server.listen(port, function(){
+    //Callback fires on success
+    console.log("Server listening on: http://localhost:%s", port);
 });
 ```
 
+### Run the server with node
 ```
 node app.js
 > Server listening on: http://localhost:8080
